@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'puppet_hipchat', :type => :class do
+describe 'hipchat', :type => :class do
   let(:facts) { { :is_pe => false } }
 
   describe "default" do

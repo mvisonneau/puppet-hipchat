@@ -1,11 +1,12 @@
 ---
-:hipchat_api: '<%= @api_key %>'
+:hipchat_api: '<%= @api %>'
 :hipchat_room: '<%= @room %>'
 :hipchat_notify_color: '<%= @notify_color %>'
-:hipchat_notify: <%= @notify_room %>
+:hipchat_notify: <%= @notify %>
 :hipchat_statuses:
 <% @statuses.each do |status| -%>
   - <%= status %>
 <% end -%>
 :hipchat_puppetboard: <%= @puppetboard %>
 :hipchat_dashboard: <%= @dashboard %>
+:hipchat_proxy: <%= @proxy %>

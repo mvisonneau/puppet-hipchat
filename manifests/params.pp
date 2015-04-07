@@ -1,13 +1,22 @@
-# Class: puppet_hipchat::params
+# Class: hipchat::params
 #
 # Parameterize for Puppet platform.
 #
-class puppet_hipchat::params {
+class hipchat::params {
+  $token            = undef
+  $room             = undef
+  $notify           = false,
+  $notify_color     = 'red',
+  $failed_color     = 'red',
+  $successful_color = 'green',
+  $unchanged_color  = 'gray',
+  $statuses         = ['failed'],
+  $package_name     = 'hipchat'
+  $install_hc_gem   = true
+  $puppetboard      = false
+  $dashboard        = false
+  $proxy            = undef
 
-  $package_name   = 'hipchat'
-  $install_hc_gem = true
-  $puppetboard    = false
-  $dashboard      = false
 
   if str2bool($::is_pe) {
     $puppetconf_path = '/etc/puppetlabs/puppet'
@@ -20,4 +29,6 @@ class puppet_hipchat::params {
     $owner           = 'puppet'
     $group           = 'puppet'
   }
+
+  $config_file = "${puppetconf_path}/hipchat.yaml"
 }

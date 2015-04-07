@@ -13,7 +13,7 @@ Puppet::Reports.register_report(:hipchat) do
   raise(Puppet::ParseError, "Hipchat report config file #{configfile} not readable") unless File.exist?(configfile)
   config = YAML.load_file(configfile)
 
-  HIPCHAT_API = config[:hipchat_api]
+  HIPCHAT_TOKEN = config[:hipchat_token]
   HIPCHAT_ROOM = config[:hipchat_room]
   HIPCHAT_NOTIFY = config[:hipchat_notify]
   HIPCHAT_STATUSES = Array(config[:hipchat_statuses] || 'failed')
@@ -28,9 +28,10 @@ Puppet::Reports.register_report(:hipchat) do
   DISABLED_FILE = File.join([File.dirname(Puppet.settings[:config]), 'hipchat_disabled'])
   HIPCHAT_PROXY = config[:hipchat_proxy]
 
-  if HIPCHAT_PROXY && (RUBY_VERSION < '1.9.3' || Gem.loaded_specs["hipchat"].version < '1.0.0')
-    raise(Puppet::SettingsError, "hipchat_proxy requires ruby >= 1.9.3 and hipchat gem >= 1.0.0")
-  end
+  # Causes errors in some cases
+  #if HIPCHAT_PROXY && (RUBY_VERSION < '1.9.3' || Gem.loaded_specs["hipchat"].version < '1.0.0')
+  #  raise(Puppet::SettingsError, "hipchat_proxy requires ruby >= 1.9.3 and hipchat gem >= 1.0.0")
+  #end
 
   desc <<-DESC
   Send notification of puppet runs to a Hipchat room.
@@ -73,9 +74,9 @@ Puppet::Reports.register_report(:hipchat) do
           msg << ": #{HIPCHAT_DASHBOARD}/nodes/#{self.host}/view"
         end
         if HIPCHAT_PROXY
-          client = HipChat::Client.new(HIPCHAT_API, :http_proxy => HIPCHAT_PROXY)
+          client = HipChat::Client.new(HIPCHAT_TOKEN, :http_proxy => HIPCHAT_PROXY)
         else
-          client = HipChat::Client.new(HIPCHAT_API)
+          client = HipChat::Client.new(HIPCHAT_TOKEN)
         end
         client[HIPCHAT_ROOM].send('Puppet', msg, :notify => HIPCHAT_NOTIFY, :color => color(self.status), :message_format => 'text')
     end
