@@ -15,15 +15,15 @@ Puppet::Reports.register_report(:hipchat) do
 
   HIPCHAT_TOKEN = config[:hipchat_token]
   HIPCHAT_ROOM = config[:hipchat_room]
-  HIPCHAT_NOTIFY = config[:hipchat_notify]
+  HIPCHAT_NOTIFY = config[:hipchat_notify_room]
   HIPCHAT_STATUSES = Array(config[:hipchat_statuses] || 'failed')
   HIPCHAT_PUPPETBOARD = config[:hipchat_puppetboard]
   HIPCHAT_DASHBOARD = config[:hipchat_dashboard]
 
   # set the default colors if not defined in the config
-  HIPCHAT_FAILED_COLOR = config[:failed_color] || 'red'
-  HIPCHAT_CHANGED_COLOR = config[:successful_color] || 'green'
-  HIPCHAT_UNCHANGED_COLOR = config[:unchanged_color] || 'gray'
+  HIPCHAT_FAILED_COLOR = config[:hipchat_failed_color] || 'red'
+  HIPCHAT_CHANGED_COLOR = config[:hipchat_successful_color] || 'green'
+  HIPCHAT_UNCHANGED_COLOR = config[:hipchat_unchanged_color] || 'gray'
 
   DISABLED_FILE = File.join([File.dirname(Puppet.settings[:config]), 'hipchat_disabled'])
   HIPCHAT_PROXY = config[:hipchat_proxy]

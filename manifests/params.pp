@@ -5,12 +5,12 @@
 class hipchat::params {
   $token            = undef
   $room             = undef
-  $notify           = false,
-  $notify_color     = 'red',
-  $failed_color     = 'red',
-  $successful_color = 'green',
-  $unchanged_color  = 'gray',
-  $statuses         = ['failed'],
+  $notify           = false
+  $notify_color     = 'red'
+  $failed_color     = 'red'
+  $successful_color = 'green'
+  $unchanged_color  = 'gray'
+  $statuses         = ['failed']
   $package_name     = 'hipchat'
   $install_hc_gem   = true
   $puppetboard      = false

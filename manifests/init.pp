@@ -5,7 +5,7 @@
 class hipchat (
   $token            = $hipchat::params::token,
   $room             = $hipchat::params::room,
-  $notify           = $hipchat::params::notify,
+  $notify_room      = $hipchat::params::notify_room,
   $notify_color     = $hipchat::params::notify_color,
   $failed_color     = $hipchat::params::failed_color,
   $successful_color = $hipchat::params::successful_color,

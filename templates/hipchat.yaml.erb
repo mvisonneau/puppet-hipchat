@@ -2,7 +2,7 @@
 :hipchat_api: '<%= @api %>'
 :hipchat_room: '<%= @room %>'
 :hipchat_notify_color: '<%= @notify_color %>'
-:hipchat_notify: <%= @notify %>
+:hipchat_notify_room: <%= @notify_room %>
 :hipchat_statuses:
 <% @statuses.each do |status| -%>
   - <%= status %>
@@ -10,3 +10,6 @@
 :hipchat_puppetboard: <%= @puppetboard %>
 :hipchat_dashboard: <%= @dashboard %>
 :hipchat_proxy: <%= @proxy %>
+:hipchat_failed_color: <%= @hipchat_failed_color %>
+:hipchat_successful_color: <%= @hipchat_successful_color %>
+:hipchat_unchanged_color: <%= @hipchat_unchanged_color %>
