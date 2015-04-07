@@ -16,7 +16,7 @@ class hipchat::params {
   $puppetboard      = false
   $dashboard        = false
   $proxy            = undef
-  $config_file      = undef
+  $config_file      = "${hipchat::params::puppetconf_path}/hipchat.yaml"
 
   if str2bool($::is_pe) {
     $puppetconf_path = '/etc/puppetlabs/puppet'

@@ -10,8 +10,8 @@ class hipchat (
   $failed_color     = $hipchat::params::failed_color,
   $successful_color = $hipchat::params::successful_color,
   $unchanged_color  = $hipchat::params::unchanged_color,
+  $config_file      = $hipchat::params::config_file,
   $statuses         = $hipchat::params::statuses,
-  $puppetconf_path  = $hipchat::params::puppetconf_path,
   $package_name     = $hipchat::params::package_name,
   $install_hc_gem   = $hipchat::params::install_hc_gem,
   $provider         = $hipchat::params::provider,
@@ -20,14 +20,10 @@ class hipchat (
   $puppetboard      = $hipchat::params::puppetboard,
   $dashboard        = $hipchat::params::dashboard,
   $proxy            = $hipchat::params::proxy,
-  $config_file      = undef,
-) {
+) inherits hipchat::params {
 
   validate_string($token)
   validate_string($room)
-  if ! defined( $config_file ) {
-    $config_file = "${puppetconf_path}/hipchat.yaml"
-  }
 
   file { $config_file:
     ensure  => file,
