@@ -16,18 +16,18 @@ class hipchat::params {
   $puppetboard      = false
   $dashboard        = false
   $proxy            = undef
+  $config_file      = undef
 
   if str2bool($::is_pe) {
     $puppetconf_path = '/etc/puppetlabs/puppet'
     $provider        = 'pe_gem'
     $owner           = 'pe-puppet'
     $group           = 'pe-puppet'
-    $config_file     = "${puppetconf_path}/hipchat.yaml"
   } else {
     $puppetconf_path = '/etc/puppet'
     $provider        = 'gem'
     $owner           = 'puppet'
     $group           = 'puppet'
-    $config_file     = "${puppetconf_path}/hipchat.yaml"
+    
   }
 }
